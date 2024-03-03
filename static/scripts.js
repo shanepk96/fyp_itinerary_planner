@@ -56,7 +56,15 @@ $('#destination_input').on('blur', () => {
     $('#open_dropdown').removeClass("is-active")
 });
 
+let selected_dest = ''
+// $('.dropdown-item').on('click', () => {
+
+// })
+
+let country_selection_from_dropdown = ''
+
 $('#destination_input').on('keyup', () => {
+    country_selection_from_dropdown = ''
     if ($('#destination_input').val() == '') {
         console.log("test")
     }else{
@@ -81,7 +89,7 @@ $('#destination_input').on('keyup', () => {
                     console.log(resp)
                     $('#destination_result_dropdown').empty()
                     for (let loca in resp){
-                        var html = '<div class="dropdown-item">'
+                        var html = '<div class="dropdown-item" id="' + resp[loca]['id'] + '">'
                         html+='<p><strong>' + resp[loca]['name'] + '</strong></p>'
                         html+='<p class="is-size-7 has-text-right is-italic">' + resp[loca]['blurb'] + '</p>'
                         html+='</div>'
@@ -89,6 +97,15 @@ $('#destination_input').on('keyup', () => {
 
                         $('#destination_result_dropdown').append(html)
                     }
+                    $('.dropdown-item').each(function (e) {
+                        console.log("Adding Listeners")
+                        var itm = this;
+                        this.addEventListener('click', (e) => {
+                            console.log("clicked");
+                        })
+                    })
+
+                    
                 }
             },
             error: function(resp){

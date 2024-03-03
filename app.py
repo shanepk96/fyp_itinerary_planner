@@ -1,6 +1,7 @@
 from flask import Flask, render_template,session,redirect,jsonify
 from functools import wraps
 import pymongo
+import random
 
 app = Flask(__name__)
 app.secret_key = b'X\x18\x0fzx\x0b\xdb\xef(7\xbb\xe0P\x9a\x1b\xd8'
@@ -15,6 +16,10 @@ f = open('static/data/destinations.json', encoding="utf-8")
 destination_data = json.load(f)
 f.close()
 
+f = open('static/data/country_id_map.json',encoding="utf-8")
+country_id_map = json.load(f)
+f.close()
+
 def login_required(f):
     @wraps(f)
     def wrap(*args, **kwargs):
@@ -26,6 +31,7 @@ def login_required(f):
 
 #User Routes
 from user import routes
+from trip_planner import routes
 
 @app.route('/')
 def home():
@@ -53,3 +59,11 @@ def get_destination_data(subst):
             if subst.lower() in item['name'].lower():
                 current_dest_list.append(item)
         return jsonify(current_dest_list), 200
+
+@app.route('/get_destination_options/<cntry>', methods=['GET'])
+def generate_options(cntry):
+    # Get country input
+    # return List of Recipes from chosen country
+    # allow user to submit recipes
+    random_sample_recipes = random.sample(country_id_map[cntry], 5)
+    return jsonify({"data": random_sample_recipes}), 200

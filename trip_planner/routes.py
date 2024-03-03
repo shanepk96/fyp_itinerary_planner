@@ -6,6 +6,6 @@ from trip_planner.models import Trip
 def create():
     return Trip().create_trip()
 
-@app.route('/trip/new/generate_options', methods=['POST'])
-def generate_options():
-    print("hello")
+# @app.route('/trip/new/generate_options/<ctry>', methods=['GET','POST'])
+# def generate_options(ctry):
+#     return Trip.generate_options(ctry)
