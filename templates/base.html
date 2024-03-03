@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Login</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+    <link href='https://unpkg.com/css.gg@2.0.0/icons/css/airplane.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bulma-list/css/bulma-list.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/css/bulma-carousel.min.css">
+    
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  {% if session['logged_in'] == True: %}
+  <nav class="navbar" role="navigation">
+    <div class="navbar-brand">
+        <a href="#">
+            <img src="/static/content/images.png" alt="" width="112" height="28">
+        </a>
+    </div>
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/new_trip/">
+            New Trip
+          </a>
+          
+          <a class="navbar-item">
+            Upcoming Trips
+          </a>
+
+          <a class="navbar-item">
+            Past Trips
+          </a>
+    
+          <!-- <div class="navbar-item has-dropdown is-hoverable">
+            <a class="navbar-link">
+              More
+            </a>
+    
+            <div class="navbar-dropdown">
+              <a class="navbar-item">
+                About
+              </a>
+              <a class="navbar-item">
+                Jobs
+              </a>
+              <a class="navbar-item">
+                Contact
+              </a>
+              <hr class="navbar-divider">
+              <a class="navbar-item">
+                Report an issue
+              </a>
+            </div>
+          </div> -->
+        </div>
+    
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary" href="/user/signout">
+                <strong>Sign out</strong>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+</nav>
+  {% else %}
+    <nav class="navbar" role="navigation">
+        <div class="navbar-brand">
+            <a href="#">
+                <img src="/static/content/images.png" alt="" width="112" height="28">
+            </a>
+        </div>
+        <div id="navbarBasicExample" class="navbar-menu">
+            <div class="navbar-start">
+              <div class="navbar-item">
+                <strong>Welcome!</strong>
+              </div>
+            </div>
+        
+            <div class="navbar-end">
+              <div class="navbar-item">
+                <div class="buttons">
+                  <a class="button is-primary">
+                    <strong>Sign up</strong>
+                  </a>
+                  <a class="button is-light">
+                    Log in
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+    </nav>
+    {% endif %}
+    {% block content %}
+
+
+    {% endblock %}
+<script src="/static/jquery.js"></script>
+<script src="/static/scripts.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script> -->
+<!-- <script>
+  bulmaCarousel.attach('#carousel-demo', {
+    slidesToScroll: 3,
+    slidesToShow: 3
+  });
+  </script> -->
+</body>
+</html>

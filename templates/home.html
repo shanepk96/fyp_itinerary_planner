@@ -1,0 +1,144 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <!-- <div class="card-wrapper">
+    <div class="card"> -->
+    <!-- <form name="signup_form" >
+        
+          <h1 class="center">Sign Up</h1>
+          
+          <hr>
+      
+          <label for="name"><b>name</b></label>
+          <input type="text" placeholder="Enter Name" name="name" class = "field" required>
+      
+          <label for="email"><b>email</b></label>
+          <input type="text" placeholder="Enter Email" name="email" class = "field" required>
+      
+          <label for="password"><b>password</b></label>
+          <input type="password" placeholder="Password" name="password" class = "field" required>
+      
+            <p class="error error--hidden"></p>
+    
+            <input type="submit" class="btn" value="sign up">
+          
+        
+      </form> 
+    </div> -->
+    <div class="columns">
+        <div class="column"></div>
+        <div class="column is-4">
+            <!-- <div class="card"> -->
+                <!-- <div class="card-image">
+                  <figure class="image is-4by3">
+                    <img src="/static/content/signupimage.jpg" alt="Placeholder image">
+                  </figure>
+                </div> -->
+
+                <!-- <div class="card-content"> -->
+                    <form name="signup_form" class="box">
+                        <div class="field">
+                            <div class="label is-size-6">
+                                Your name:
+                            </div>
+
+                            <div class="field-body">
+                                <div class="field">
+                                    <input type="text" placeholder="Enter Name" name="name" class = "input" required >
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="field">
+                            <div class="label is-normal is-size-6">
+                                Your email:
+                            </div>
+
+                            <div class="field-body">
+                                <div class="field">
+                                    <input type="text" placeholder="Enter Email" name="email" class = "input" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="label is-normal is-size-6">
+                                Your password:
+                            </div>
+
+                            <div class="field-body">
+                                <div class="field">
+                                    <input input type="password" placeholder="Enter Password" name="password" class = "input" required >
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" class="button" value="sign up">
+                    </form>
+                <!-- </div>
+            </div> -->
+        </div>
+        <div class="column"></div>
+        <div class="column is-5">
+            <!-- <div class="card"> -->
+                <!-- <div class="card-image">
+                  <figure class="image is-128x128">
+                    <img src="/static/content/signupimage.jpg" alt="Placeholder image">
+                  </figure>
+                </div> -->
+
+                <!-- <div class="box"> -->
+                    <form name="signin_form" class="box">
+                        <div class="field">
+                            <div class="label is-normal is-size-6">
+                                Your email:
+                            </div>
+
+                            <div class="field-body">
+                                <div class="field">
+                                    <input type="text" placeholder="Enter Email" name="email" class = "input" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="label is-normal is-size-6">
+                                Your password:
+                            </div>
+
+                            <div class="field-body">
+                                <div class="field">
+                                    <input input type="password" placeholder="Enter Password" name="password" class = "input" required >
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" class="button" value="sign in">
+                    </form>
+                <!-- </div> -->
+            <!-- </div> -->
+        </div>
+        <div class="column"></div>
+
+
+
+    </div>
+    
+
+    <!-- <div class="card">
+        <form name="signin_form" >
+            
+              <h1 class="center">Sign in</h1>
+              
+              <hr>
+              <label for="email"><b>email</b></label>
+              <input type="text" placeholder="Enter Email" name="email" class = "field" required>
+          
+              <label for="password"><b>password</b></label>
+              <input type="password" placeholder="Password" name="password" class = "field" required>
+          
+                <p class="error error--hidden"></p>
+        
+                <input type="submit" class="btn" value="sign in">
+              
+            
+          </form> 
+        </div>
+    </div> -->
+{% endblock %}

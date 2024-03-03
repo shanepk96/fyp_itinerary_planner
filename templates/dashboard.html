@@ -1,0 +1,537 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+    <div class = "container">
+        <div class="section">
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-horizontal has-text-centered">
+                    <article class="tile is-child notification">
+                        <p class="title has-text-centered">
+                            Welcome <strong>{{session['user']['name']}}</strong>
+                        </p>
+                        <nav class="level has-text-centered">
+                            <div class="level-item has-text-centered">
+                                <div class="control">
+                                    <button class="button is-link is-light">I know where I want to go</button>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <div class="control">
+                                        <button class="button is-link is-light">Suggest a place for me</button>
+                                    </div>
+                                  
+                                </div>
+                              </div>
+                        </nav>
+                        <p class="subtitle">
+                            Where have you been before?<br>
+                        </p>
+                        <div class="dropdown" id="open_dropdown">
+
+                            <div class="dropdown-trigger">
+                                <div class="control" id="input_load_control">
+                                    <input class="input" type="text" placeholder="Text input" id="destination_input">
+                                </div>
+                            </div>
+
+                            <div class="dropdown-menu" id="dropdown-menu2" role="menu">
+                                <div class="dropdown-content" id="destination_result_dropdown">
+                                    <!-- <div class="dropdown-item">
+                                        <p>start typing and we'll find where you were</p>
+                                    </div> -->
+
+                                    <div class="dropdown-item">
+                                        <p><strong>Dublin</strong></p>
+                                        <p class="is-size-7 has-text-right is-italic"> A city in Dublin, Ireland</p>
+                                    </div>
+                                    <hr class="dropdown-divider">
+                                    <div class="dropdown-item">
+                                        <p><strong>Dublin</strong></p>
+                                        <p class="is-size-7 has-text-right is-italic"> A city in Dublin, Ireland</p>
+                                    </div>
+                        
+                                </div>
+                            </div>
+                        </div>
+                        <p>We'll find some suggestions for you.</p>
+                    </article>
+                </div>
+                </div>
+                </div>
+                <div class="section">
+                <div class="tile is-ancestor">
+                    <div class="tile is-parent has-text-centered">
+                        <article class="tile is-child notification">
+                            <p>here are some some suggestions.</p>
+                            <p>click to see things to do!</p>
+                            <br>
+                                <div class="tile is-parent has-text-centered">
+                                    <div class="tile is-child box notification is-success">
+                                        <div class="content">
+                                            <figure class="image is-96x96">
+                                                <img src="https://flagdownload.com/wp-content/uploads/Flag_of_Ireland_Flat_Round-128x128.png">
+                                              </figure>
+                                              <p>Dublin, Ireland</p>
+                                            </div>
+                                        </div>
+                                      <div class="tile is-child box">
+                                        <div class="content">
+                                            <figure class="image is-96x96">
+                                                <img src="https://flagdownload.com/wp-content/uploads/Flag_of_Spain_Flat_Round-128x128.png">
+                                              </figure>
+                                                <p>Valencia, Spain</p>
+                                            </div>
+                                        </div>
+                                          <div class="tile is-child box">
+                                            <div class="content">
+                                                <figure class="image is-96x96">
+                                                    <img src="https://flagdownload.com/wp-content/uploads/Flag_of_Italy_Flat_Round-128x128.png">
+                                                  </figure>
+                                                  <p>Lucca, Italy</p>
+                                                </div>
+                                            </div>
+                                          
+                                            <div class="tile is-child box">
+                                                <div class="content">
+                                                    <figure class="image is-96x96">
+                                                        <img src="https://flagdownload.com/wp-content/uploads/Flag_of_Germany_Flat_Round-128x128.png">
+                                                        
+                                                    </figure>
+                                                    <p>Berlin, Germany</p>  
+                                                    </div>
+                                                </div>
+                                </div>
+                                <div class="tile">
+
+                                    <!-- <div class="container">
+                                        
+                                        <div id="carousel-demo" class="carousel">
+                                            <div class="item-1">
+                                                <div class="tile is-parent">
+                                                    <article class="tile is-child box">
+                                                      <p class="title">1</p>
+                                                      <p class="subtitle">first activity</p>
+                                                    </article>
+                                                  </div>
+                                            </div>
+                                            <div class="item-2">
+                                                <div class="tile is-parent">
+                                                    <article class="tile is-child box">
+                                                      <p class="title">2</p>
+                                                      <p class="subtitle">second activity</p>
+                                                    </article>
+                                                  </div>
+                                            </div>
+                                            <div class="item-3">
+                                                <div class="tile is-parent">
+                                                    <article class="tile is-child box">
+                                                      <p class="title">3</p>
+                                                      <p class="subtitle">third activity</p>
+                                                    </article>
+                                                  </div>
+                                            </div>
+                                            <div class="item-3">
+                                                <div class="tile is-parent">
+                                                    <article class="tile is-child box">
+                                                      <p class="title">3</p>
+                                                      <p class="subtitle">third activity</p>
+                                                    </article>
+                                                  </div>
+                                            </div>
+                                            <div class="item-3">
+                                                <div class="tile is-parent">
+                                                    <article class="tile is-child box">
+                                                      <p class="title">3</p>
+                                                      <p class="subtitle">third activity</p>
+                                                    </article>
+                                                  </div>
+                                            </div>
+                                            <div class="item-3">
+                                                <div class="tile is-parent">
+                                                    <article class="tile is-child box">
+                                                      <p class="title">3</p>
+                                                      <p class="subtitle">third activity</p>
+                                                    </article>
+                                                  </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </div> -->
+                                    <!-- <div class="tile is-parent">
+                                        <article class="tile is-child box">
+                                          <p class="title">1</p>
+                                          <p class="subtitle">first activity</p>
+                                        </article>
+                                      </div>
+                                      <div class="tile is-parent">
+                                        <article class="tile is-child box">
+                                          <p class="title">2</p>
+                                          <p class="subtitle">second activity</p>
+                                        </article>
+                                      </div>
+                                      <div class="tile is-parent">
+                                        <article class="tile is-child box">
+                                          <p class="title">3</p>
+                                          <p class="subtitle">third activity</p>
+                                        </article>
+                                      </div> -->
+                            </div>
+                        </article>
+                        
+                    </div>
+                    
+                </div>
+                    <div class="container">
+                    <div id="carousel-demo" class="carousel">
+                                                <div class="item-1">
+                                                    <div class="tile is-parent">
+                                                        <article class="tile is-child box">
+                                                        <p class="title">1</p>
+                                                        <p class="subtitle">first activity</p>
+                                                        </article>
+                                                    </div>
+                                                </div>
+                                                <div class="item-2">
+                                                    <div class="tile is-parent">
+                                                        <article class="tile is-child box">
+                                                        <p class="title">2</p>
+                                                        <p class="subtitle">second activity</p>
+                                                        </article>
+                                                        
+                                                    </div>
+                                                </div>
+                                                <div class="item-3">
+                                                    <div class="tile is-parent">
+                                                        <article class="tile is-child box">
+                                                        <p class="title">3</p>
+                                                        <p class="subtitle">third activity</p>
+                                                        </article>
+                                                    </div>
+                                                </div>
+                                                <div class="item-3">
+                                                    <div class="tile is-parent">
+                                                        <article class="tile is-child box">
+                                                        <p class="title">3</p>
+                                                        <p class="subtitle">third activity</p>
+                                                        </article>
+                                                    </div>
+                                                </div>
+                                                <div class="item-3">
+                                                    <div class="tile is-parent">
+                                                        <article class="tile is-child box">
+                                                        <p class="title">3</p>
+                                                        <p class="subtitle">third activity</p>
+                                                        </article>
+                                                    </div>
+                                                </div>
+                                                <div class="item-3">
+                                                    <div class="tile is-parent">
+                                                        <article class="tile is-child box">
+                                                        <p class="title">3</p>
+                                                        <p class="subtitle">third activity</p>
+                                                        </article>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                </div>
+                <div class="section">
+                    <div class="tile is-ancestor">
+                        <div class="tile is-parent is-vertical">
+                            <div class="tile is-parent">
+                                <div class="tile is-child notification has-text-centered">
+                                    <p class="title">Lets set up your trip to Ireland!</p>
+                                    <p>Once we get some details, we can start planning everything</p>
+                                    <br>
+                                    <div class="field is-horizontal">
+                                        <div class="field-label is-normal">
+                                          <label class="label">Flying from:</label>
+                                        </div>
+                                        <div class="field-body">
+                                          <div class="field">
+                                            <p class="control is-expanded has-icons-left">
+                                              <input class="input" type="text" placeholder="Name">
+                                              <span class="icon is-small is-left">
+                                                <i class="fas fa-user"></i>
+                                              </span>
+                                            </p>
+                                          </div>
+                                          <!-- <div class="field-label is-normal">
+                                            <label class="label">Flying to Dublin Airport</label>
+                                          </div> -->
+                                          <!-- <div class="field">
+                                            <p class="control is-expanded has-icons-left">
+                                              <input class="input" type="text" placeholder="Name">
+                                              <span class="icon is-small is-left">
+                                                <i class="fas fa-user"></i>
+                                              </span>
+                                            </p>
+                                          </div> -->
+                                        </div>
+                                      </div>
+                                      
+                                      <div class="field is-horizontal">
+                                        <div class="field-label">
+                                            <label class="label">When:</label>
+                                        </div>
+                                        <div class="field-body">
+                                          <div class="field">
+                                            <div class="control">
+                                                <input type="text" name="daterange" value="11/21/2023 - 11/25/2023" />
+                                            </div>
+                                            
+                                          </div>
+                                        </div>
+                                      </div>
+                                      
+                                      <div class="field is-horizontal">
+                                        <div class="field-label is-normal">
+                                            <label class="label">Whats your budget?</label>
+                                          </div>
+                                        <div class="field-body">
+                                          <div class="field is-expanded">
+                                            <div class="field has-addons">
+                                              <p class="control">
+                                                <a class="button is-static">
+                                                  €
+                                                </a>
+                                              </p>
+                                              <p class="control is-expanded">
+                                                <input class="input" type="number" placeholder="enter your budget here">
+                                              </p>
+                                            </div>
+                                            
+                                          </div>
+                                        </div>
+                                      </div>
+                                      
+                                      
+                                      <div class="field is-horizontal">
+                                        <div class="field-label is-normal">
+                                          <label class="label">Name of your trip:</label>
+                                        </div>
+                                        <div class="field-body">
+                                          <div class="field">
+                                            <div class="control">
+                                              <input class="input" type="text" placeholder="This will be saved to your 'Upcoming trips' section!">
+                                            </div>
+                                            
+                                          </div>
+                                        </div>
+                                      </div>
+                                      
+                                      
+                                      <div class="field is-horizontal">
+                                        <div class="field-label">
+                                          <!-- Left empty for spacing -->
+                                        </div>
+                                        <div class="field-body">
+                                          <div class="field">
+                                            <div class="control">
+                                              <button class="button is-primary">
+                                                Save trip
+                                              </button>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                </div>
+                            </div>
+                        
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="tile is-ancestor">
+                        <div class="tile is-vertical is-parent">
+                                <p class="title"> How to get there </p>
+                                <div class="tile box is-child">
+                                    flight 1
+                                    <div class="field">
+                                      <div class="control">
+                                        <label class="radio">
+                                          <input type="radio" name="flight-select">
+                                          I'm taking this flight
+                                        </label>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="tile box is-child">
+                                    flight 2
+                                    <div class="field">
+                                      <div class="control">
+                                        <label class="radio">
+                                          <input type="radio" name="flight-select">
+                                          I'm taking this flight
+                                        </label>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="tile box is-child">
+                                    flight 3
+                                    <div class="field">
+                                      <div class="control">
+                                        <label class="radio">
+                                          <input type="radio" name="flight-select">
+                                          I'm taking this flight
+                                        </label>
+                                      </div>
+                                    </div>
+                                </div>
+                                <div class="tile notification is-warning box is-child">
+                                  <p class="subtitle">If we couldn't find something you can enter the details here:</p>
+                                  <div class="field is-horizontal">
+                                    <div class="field-label is-normal">
+                                      <label class="label">Flight:</label>
+                                    </div>
+                                    <div class="field-body">
+                                      <div class="field">
+                                        <p class="control is-expanded has-icons-left">
+                                          <input class="input" type="text" placeholder="flight-number">
+                                          <span class="icon is-small is-left">
+                                            <i class="fas fa-user"></i>
+                                          </span>
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                              </div>
+                        </div>
+                        <div class="tile is-vertical is-parent">
+                            <p class="title"> and where you can stay </p>
+                            <div class="tile box is-child">
+                                accommodation 1
+                                <div class="field">
+                                  <div class="control">
+                                    <label class="radio">
+                                      <input type="radio" name="accomodation-select">
+                                      I'm staying here
+                                    </label>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="tile box is-child">
+                                accommodation 2
+                                <div class="field">
+                                  <div class="control">
+                                    <label class="radio">
+                                      <input type="radio" name="accomodation-select">
+                                      I'm staying here
+                                    </label>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="tile box is-child">
+                                accommodation 3
+                                <div class="field">
+                                  <div class="control">
+                                    <label class="radio">
+                                      <input type="radio" name="accomodation-select">
+                                      I'm staying here
+                                    </label>
+                                  </div>
+                                </div>
+                            </div>
+                            <div class="tile box notification is-warning is-child">
+                              <p class="subtitle">If we couldn't find something you can enter the details here:</p>
+                              <div class="field is-horizontal">
+                                <div class="field-label is-normal">
+                                  <label class="label">accommodation:</label>
+                                </div>
+                                <div class="field-body">
+                                  <div class="field">
+                                    <p class="control is-expanded has-icons-left">
+                                      <input class="input" type="text" placeholder="accommodation address">
+                                      <span class="icon is-small is-left">
+                                        <i class="fas fa-user"></i>
+                                      </span>
+                                    </p>
+                                  </div>
+                                </div>
+                              </div>
+                          </div>
+                    </div>
+                    
+                    </div>
+                </div>
+                <div class="section">
+                  <div class="columns">
+                    <div class="column is-12 notification is-success">
+                      <p class="title">Find some things to do
+                      </p>
+                    </div>
+                    </div>
+                    <div class="columns">
+                    <div class="column notification is-two-fifths">
+                      <article class="panel">
+                        <p class="panel-heading ">
+                        <p class="panel-tabs has-background-white">
+                          <a class="is-active is-size-4">Things to do</a>
+                          <a class="is-size-4 has-text-grey-light">Things to see</a>
+                          <a class="is-size-4 has-text-grey-light">Places to eat</a>
+                        </p>
+                      </p>
+                        <a class="panel-block is-active">
+                          <span class="panel-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                          </span>
+                          First thing
+                        </a>
+                        <a class="panel-block">
+                          <span class="panel-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                          </span>
+                          Second thing
+                        </a>
+                        <a class="panel-block">
+                          <span class="panel-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                          </span>
+                          Third Thing
+                        </a>
+                        <a class="panel-block">
+                          <span class="panel-icon">
+                            <i class="fas fa-book" aria-hidden="true"></i>
+                          </span>
+                          Fourth thing
+                        </a>
+                      </article>  
+                    </div>
+                    
+                    <div class="column">
+                      <figure class="image image is-16by9">
+                        <img src="/static/content/map.PNG">
+                      </figure>
+                    </div>
+                    
+                  </div>
+                </div>
+                <div class="section">
+                  <p class="title"> Your Itinerary </p>
+                  <figure class="image image is-16by9">
+                    <img src="/static/content/itin.PNG">
+                  </figure>
+                  <div class="field-body">
+                    <div class="field">
+                      <div class="control">
+                        <button class="button is-primary">
+                          Export to calendar
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+      </div>
+    <script src="https://cdn.jsdelivr.net/npm/bulma-carousel@4.0.3/dist/js/bulma-carousel.min.js"></script>
+    <script>
+    bulmaCarousel.attach('#carousel-demo', {
+        slidesToScroll: 1,
+        slidesToShow: 2
+    });
+    </script>
+
+{% endblock %}
