@@ -60,10 +60,15 @@ def get_destination_data(subst):
                 current_dest_list.append(item)
         return jsonify(current_dest_list), 200
 
-@app.route('/get_destination_options/<cntry>', methods=['GET'])
-def generate_options(cntry):
+@app.route('/get_destination_options/<destid>', methods=['GET'])
+def generate_options(destid):
     # Get country input
     # return List of Recipes from chosen country
     # allow user to submit recipes
-    random_sample_recipes = random.sample(country_id_map[cntry], 5)
-    return jsonify({"data": random_sample_recipes}), 200
+    ml_country = ''
+    for dest in destination_data:
+        if dest['id'] == destid:
+            ml_country = dest['ml_target']
+
+    random_sample_recipes = random.sample(country_id_map[ml_country], 4)
+    return jsonify({"data": random_sample_recipes, "country": ml_country}), 200

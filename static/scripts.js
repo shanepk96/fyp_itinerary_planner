@@ -51,10 +51,10 @@ $('#destination_input').on('focus', () => {
     $('#open_dropdown').addClass("is-active")
 })
 
-$('#destination_input').on('blur', () => {
-    $('#input_load_control').removeClass("is-loading")
-    $('#open_dropdown').removeClass("is-active")
-});
+// $('#destination_input').on('blur', () => {
+//     $('#input_load_control').removeClass("is-loading")
+//     $('#open_dropdown').removeClass("is-active")
+// });
 
 let selected_dest = ''
 // $('.dropdown-item').on('click', () => {
@@ -99,10 +99,21 @@ $('#destination_input').on('keyup', () => {
                     }
                     $('.dropdown-item').each(function (e) {
                         console.log("Adding Listeners")
+                        console.log(this);
                         var itm = this;
-                        this.addEventListener('click', (e) => {
-                            console.log("clicked");
-                        })
+                        itm.addEventListener('mouseover', (e) => {
+                            $("#" + this.id).addClass("has-background-info-light");
+                        });
+                        itm.addEventListener('mouseout', (e) => {
+                            $("#" + this.id).removeClass("has-background-info-light");
+                        });
+                        itm.addEventListener('click', (e) => {
+                            $('#input_load_control').removeClass("is-loading")
+                            $('#open_dropdown').removeClass("is-active")
+                            console.log(this.innerText.split('In')[0])
+                            $('#destination_input').val(this.innerText.split('In')[0]);
+                            $('#destination_input').addClass("has-background-info-light");
+                        });
                     })
 
                     
