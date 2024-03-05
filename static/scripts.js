@@ -44,11 +44,13 @@ $("form[name=signin_form").submit(function(e){
     e.preventDefault();
 
 })
-
+let country_selection_from_dropdown = ''
 // input_load_control
 $('#destination_input').on('focus', () => {
-    $('#input_load_control').addClass("is-loading")
-    $('#open_dropdown').addClass("is-active")
+    $('#input_load_control').addClass("is-loading");
+    $('#open_dropdown').addClass("is-active");
+    $('#submit-destination-choice').css("display","none");
+    country_selection_from_dropdown = '';
 })
 
 // $('#destination_input').on('blur', () => {
@@ -61,7 +63,7 @@ let selected_dest = ''
 
 // })
 
-let country_selection_from_dropdown = ''
+
 
 $('#destination_input').on('keyup', () => {
     country_selection_from_dropdown = ''
@@ -98,8 +100,6 @@ $('#destination_input').on('keyup', () => {
                         $('#destination_result_dropdown').append(html)
                     }
                     $('.dropdown-item').each(function (e) {
-                        console.log("Adding Listeners")
-                        console.log(this);
                         var itm = this;
                         itm.addEventListener('mouseover', (e) => {
                             $("#" + this.id).addClass("has-background-info-light");
@@ -110,9 +110,11 @@ $('#destination_input').on('keyup', () => {
                         itm.addEventListener('click', (e) => {
                             $('#input_load_control').removeClass("is-loading")
                             $('#open_dropdown').removeClass("is-active")
-                            console.log(this.innerText.split('In')[0])
                             $('#destination_input').val(this.innerText.split('In')[0]);
                             $('#destination_input').addClass("has-background-info-light");
+                            $('#submit-destination-choice').css("display","block");
+                            country_selection_from_dropdown = this.id;
+                            console.log(country_selection_from_dropdown)
                         });
                     })
 
@@ -126,7 +128,36 @@ $('#destination_input').on('keyup', () => {
 
     }
 })
+$('#submit-destination-choice').on('click', () => {
+    $.ajax({
+            url: "/get_recipe_options/".concat(country_selection_from_dropdown),
+            type:"GET",
+            data: "",
+            dataType: "json",
+            success: function(resp){
+                const r_list = resp['data']['recipes_english'] // List of recipes
+                for (i in r_list) { // loop each recipe
+                    let recipeHTML = ''
+                    const c_rec = r_list[i] // get object of each recipe
+                        Object.keys(c_rec).forEach(key => { // for each key in the recipe
+                            const value = c_rec[key];
+                            console.log(key);
+                            console.log("V");
+                            console.log(value);
 
+                            let recipeHTML = ''
+                            
+                        })
+
+                }
+
+            },
+            error: function(resp){
+                $error.text(resp.responseJSON.error).removeClass('error--hidden');
+            }
+        });
+
+})
 
 bulmaCarousel.attach('#carousel-demo', {
 			slidesToScroll: 1,

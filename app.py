@@ -16,9 +16,14 @@ f = open('static/data/destinations.json', encoding="utf-8")
 destination_data = json.load(f)
 f.close()
 
-f = open('static/data/country_id_map.json',encoding="utf-8")
+f = open('static/data/country_id_map.json', encoding="utf-8")
 country_id_map = json.load(f)
 f.close()
+
+f = open('static/data/recipe_app_data.json', encoding="utf-8")
+recipe_app_data = json.load(f)
+f.close()
+
 
 def login_required(f):
     @wraps(f)
@@ -60,7 +65,7 @@ def get_destination_data(subst):
                 current_dest_list.append(item)
         return jsonify(current_dest_list), 200
 
-@app.route('/get_destination_options/<destid>', methods=['GET'])
+@app.route('/get_recipe_options/<destid>', methods=['GET'])
 def generate_options(destid):
     # Get country input
     # return List of Recipes from chosen country
@@ -71,4 +76,7 @@ def generate_options(destid):
             ml_country = dest['ml_target']
 
     random_sample_recipes = random.sample(country_id_map[ml_country], 4)
-    return jsonify({"data": random_sample_recipes, "country": ml_country}), 200
+    rtn_data = {"recipes_english":[]}
+    for recipe in random_sample_recipes:
+        rtn_data['recipes_english'].append(recipe_app_data[str(recipe)][1])
+    return jsonify({"data": rtn_data, "country": ml_country}), 200
