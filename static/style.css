@@ -8,3 +8,8 @@
   }
 
 
+.recipe-box {
+  max-height:20em;
+  overflow:auto;
+  width:25%;
+}

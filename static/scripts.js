@@ -115,6 +115,7 @@ $('#destination_input').on('keyup', () => {
                             $('#submit-destination-choice').css("display","block");
                             country_selection_from_dropdown = this.id;
                             console.log(country_selection_from_dropdown)
+
                         });
                     })
 
@@ -128,28 +129,62 @@ $('#destination_input').on('keyup', () => {
 
     }
 })
+
+let recipesChosen = [];
 $('#submit-destination-choice').on('click', () => {
+    $('#recipe_content').empty()
     $.ajax({
             url: "/get_recipe_options/".concat(country_selection_from_dropdown),
             type:"GET",
             data: "",
             dataType: "json",
             success: function(resp){
+                console.log(resp);;
                 const r_list = resp['data']['recipes_english'] // List of recipes
                 for (i in r_list) { // loop each recipe
-                    let recipeHTML = ''
                     const c_rec = r_list[i] // get object of each recipe
+                    let recipeHTML = ''
+                    recipeHTML += '<div class="box recipe-box" id="'+ c_rec['ID'] + '">\
+                                        <div class="field">\
+                                            <table class="table">\
+                                                <thead>\
+                                                    <tr>\
+                                                        <td ><strong>' + c_rec['title'] +
+                                                        '</strong></td>\
+                                                    </tr>\
+                                                </thead>\
+                                                <tbody>'
                         Object.keys(c_rec).forEach(key => { // for each key in the recipe
-                            const value = c_rec[key];
-                            console.log(key);
-                            console.log("V");
-                            console.log(value);
-
-                            let recipeHTML = ''
-                            
+                            if (key != 'ID' && key != 'country' && key != 'title'){
+                                for (i in c_rec[key]){
+                                    const value = c_rec[key][i];
+                                    recipeHTML+= '<tr><td>' + value + '</td></tr>'
+                                }
+                            }
                         })
+                        recipeHTML+= '</tbody></table></div></div>'
+                        $('#recipe_content').append(recipeHTML)
+                    }
+                    $('.recipe-box').each(function (e) {
+                        // var itm = this
+                        this.addEventListener('click',()=>{
+                            console.log("clicked");
+                            if($('#' + this.id).hasClass("has-background-primary")){
+                                let cID = this.id
+                                $('#' + this.id).removeClass("has-background-primary")
+                                let idxR = recipesChosen.indexOf(cID)
+                                recipesChosen.splice(idxR,1);
+                                console.log(recipesChosen)
+                            }else{
+                                $('#' + this.id).addClass("has-background-primary")
+                                recipesChosen.push(this.id)
+                                console.log(recipesChosen)
+                            }
 
-                }
+
+                        })
+                    })
+                
 
             },
             error: function(resp){
